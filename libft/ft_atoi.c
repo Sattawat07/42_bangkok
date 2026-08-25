@@ -2,8 +2,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	ret;
-	int	sign;
+	long	ret;
+	int		sign;
 
 	ret = 0;
 	sign = 1;
@@ -20,5 +20,5 @@ int	ft_atoi(const char *str)
 		ret = (ret * 10) + (*str - '0');
 		str++;
 	}
-	return (ret * sign);
+	return ((int)ret * sign);
 }
