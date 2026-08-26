@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
+HEADER = libft.h
 
 PART1 = ft_tolower.c ft_toupper.c ft_isprint.c ft_isascii.c ft_isalnum.c \
 		ft_isdigit.c ft_isalpha.c ft_atoi.c ft_strlen.c ft_strlcat.c \
@@ -35,11 +36,11 @@ RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I .
 
-%.o: %.c
-	${CC} ${CFLAGS} ${INCLUDE} -c $< -o $@
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME): ${OBJS}
-	ar rcs ${NAME} ${OBJS}
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 all:${NAME}
 

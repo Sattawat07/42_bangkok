@@ -6,7 +6,7 @@
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:43:06 by sboontem          #+#    #+#             */
-/*   Updated: 2026/08/26 17:11:45 by sboontem         ###   ########.fr       */
+/*   Updated: 2026/08/26 19:28:08 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		ft_lstdelone(*lst, del);
 		*lst = tmp;
 	}
+	*lst = NULL;
 }
