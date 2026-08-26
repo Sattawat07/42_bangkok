@@ -6,7 +6,15 @@
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:43:51 by sboontem          #+#    #+#             */
-/*   Updated: 2026/08/26 11:43:52 by sboontem         ###   ########.fr       */
+/*   Updated: 2026/08/26 16:06:44 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+}
