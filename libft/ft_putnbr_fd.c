@@ -6,7 +6,7 @@
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:43:58 by sboontem          #+#    #+#             */
-/*   Updated: 2026/08/26 15:58:42 by sboontem         ###   ########.fr       */
+/*   Updated: 2026/08/27 22:08:07 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,24 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	long	number;
+	long	divisor;
+	char	c;
 
-	number = n;
 	if (fd < 0)
-		return ;
+		return;
+	number = n;
 	if (number < 0)
 	{
 		write(fd, "-", 1);
-		number *= (-1);
+		number *= -1;
 	}
-	if (number >= 10)
-		ft_putnbr_fd(number / 10, fd);
-	ft_putchar_fd((number % 10) + '0', fd);
+	divisor = 1;
+	while (number / divisor >= 10)
+		divisor *= 10;
+	while (divisor > 0)
+	{
+		c = (number / divisor) % 10 + '0';
+		ft_putchar_fd(c, fd);
+		divisor /= 10;
+	}
 }
