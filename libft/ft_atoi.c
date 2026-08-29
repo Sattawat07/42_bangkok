@@ -32,5 +32,16 @@ int	ft_atoi(const char *str)
 		ret = (ret * 10) + (*str - '0');
 		str++;
 	}
-	return ((int)(ret * sign));
+	return (ret * sign);
 }
+
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	printf("%d\n", ft_atoi("  	-42"));
+// 	printf("%d\n", ft_atoi("  	-+42"));
+// 	printf("%d\n", ft_atoi("  	+42"));
+// 	printf("%d\n", ft_atoi("  	42"));
+// 	return (0);
+// }

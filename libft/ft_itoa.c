@@ -6,7 +6,7 @@
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:42:57 by sboontem          #+#    #+#             */
-/*   Updated: 2026/08/26 15:03:51 by sboontem         ###   ########.fr       */
+/*   Updated: 2026/08/29 09:54:19 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static void	convert_to_char(char *str, long n, int len)
 	if (n < 0)
 	{
 		str[0] = '-';
-		n *= (-1);
+		n = -n;
 	}
 	while (n > 0)
 	{
-		str[len--] = (n % 10) + '0';
+		str[--len] = (n % 10) + '0';
 		n /= 10;
 	}
 }
@@ -55,7 +55,20 @@ char	*ft_itoa(int n)
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str[len--] = '\0';
+	str[len] = '\0';
 	convert_to_char(str, number, len);
 	return (str);
 }
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	char *str = ft_itoa(-4224);
+// 	if (str)
+// 	{
+// 		printf("%s\n", str);
+// 		free(str);
+// 	}
+// 	return (0);
+// }
