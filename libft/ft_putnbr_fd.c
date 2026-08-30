@@ -6,7 +6,7 @@
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:43:58 by sboontem          #+#    #+#             */
-/*   Updated: 2026/08/27 22:08:07 by sboontem         ###   ########.fr       */
+/*   Updated: 2026/08/30 20:06:19 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnbr_fd(int n, int fd)
 	char	c;
 
 	if (fd < 0)
-		return;
+		return ;
 	number = n;
 	if (number < 0)
 	{
