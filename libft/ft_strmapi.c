@@ -6,7 +6,7 @@
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 11:44:24 by sboontem          #+#    #+#             */
-/*   Updated: 2026/08/27 01:33:05 by sboontem         ###   ########.fr       */
+/*   Updated: 2026/08/31 18:46:55 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*ret;
-	size_t	i;
-	size_t	len;
+	char			*ret;
+	unsigned int	i;
+	size_t			len;
 
 	if (!s || !f)
 		return (NULL);
@@ -25,7 +25,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!ret)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (s[i])
 	{
 		ret[i] = f(i, s[i]);
 		i++;
