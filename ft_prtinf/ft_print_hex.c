@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/09 21:37:50 by sboontem          #+#    #+#             */
-/*   Updated: 2026/09/09 21:37:50 by sboontem         ###   ########.fr       */
+/*   Created: 2026/09/09 21:45:32 by sboontem          #+#    #+#             */
+/*   Updated: 2026/09/09 21:45:32 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-
-int		ft_printf(const char *format, ...);
-void	matchf(va_list args, char specifier, int *count);
-void	ft_putchr(char c, int *count);
-void	ft_putstr(char *s, int *count);
-void	ft_putnbr(int n, int *count);
-void	ft_putnbr_unsigned(unsigned int n, int *count);
 void	ft_puthex(unsigned int num, char specifier, int *count);
 void	ft_putptr(void *ptr, int *count);
-
-#endif
