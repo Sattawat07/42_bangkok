@@ -27,7 +27,7 @@ void	matchf(va_list args, char specifier, int *count)
 		ft_puthex(va_arg(args, unsigned int), specifier, count);
 }
 
-int		ft_printf(const char *f, ...)
+int	ft_printf(const char *f, ...)
 {
 	va_list	args;
 	int		count;
@@ -52,12 +52,12 @@ int		ft_printf(const char *f, ...)
 	return (count);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-	int	c;
-	c = ft_printf("%c", 'h');
-	printf("%d", c);
-	return (0);
-}
+// int main(void)
+// {
+// 	int	c;
+// 	c = ft_printf("%c", 'h');
+// 	printf("%d", c);
+// 	return (0);
+// }
