@@ -13,28 +13,39 @@
 
 void	ft_putnbr(int n, int *count)
 {
-	char	c;
-	long	divisor;
 	long	number;
+	long	divisor;
 
 	number = n;
-	divisor = 1;
 	if (number < 0)
 	{
 		ft_putchr('-', count);
-		number *= (-1);
+		number = -number;
 	}
+	divisor = 1;
 	while (number / divisor >= 10)
 		divisor *= 10;
 	while (divisor > 0)
 	{
-		c = (number / divisor) % 10 + '0';
-		ft_putchr(c, count);
-		divisor /= 10; 
+		ft_putchr((number / divisor) + '0', count);
+		number %= divisor;
+		divisor /= 10;
 	}
 }
 
 void	ft_putnbr_unsigned(unsigned int n, int *count)
 {
-	
+	unsigned long	number;
+	unsigned long	divisor;
+
+	number = n;
+	divisor = 1;
+	while (number / divisor >= 10)
+		divisor *= 10;
+	while (divisor > 0)
+	{
+		ft_putchr((number / divisor) + '0', count);
+		number %= divisor;
+		divisor /= 10;
+	}
 }

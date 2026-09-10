@@ -30,7 +30,10 @@ void	ft_putchr(char c, int *count)
 void	ft_putstr(char *s, int *count)
 {
 	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
-	(*count)++;
+		s = "(null)";
+	while (*s)
+	{
+		ft_putchr(*s, count);
+		s++;
+	}
 }

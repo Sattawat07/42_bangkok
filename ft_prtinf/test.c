@@ -42,11 +42,15 @@ int		ft_printf(const char *f, ...)
 
 int main(void)
 {
-	int	c;
-	int c2;
+	// int	c;
+	// int c2;
 
-	c = ft_printf("%c\n", 'h');
-	c2 = printf("%c\n", 'h');
-	printf("%d and %d", c, c2);
+	// c = ft_printf("%c\n", 'h');
+	// c2 = printf("%c\n", 'h');
+	// printf("%d and %d", c, c2);
+	char	*c = "hrllo";
+	int i;
+	i = printf("%s%\n", c);
+	printf("%d", i);
 	return (0);
 }
