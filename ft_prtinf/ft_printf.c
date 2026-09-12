@@ -61,3 +61,4 @@ int	ft_printf(const char *f, ...)
 // 	printf("%d", c);
 // 	return (0);
 // }
+//Undefined Behavior is like ft_printf("%"); ft_printf("%w", 42); ft_printf(NULL);

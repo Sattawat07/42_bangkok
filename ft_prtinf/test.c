@@ -1,56 +1,37 @@
-# include <stdarg.h>
-# include <unistd.h>
-
-void	ft_putchr(char c, int *count)
-{
-	write(1, &c, 1);
-	(*count)++;
-}
-
-void	matchf(va_list args, char specifier, int *count)
-{
-	if (specifier == 'c')
-		ft_putchr(va_arg(args, int), count);
-}
-
-int		ft_printf(const char *f, ...)
-{
-	va_list	args;
-	int		count;
-
-	count = 0;
-	va_start(args, f);
-	while (*f)
-	{
-		if (*f == '%')
-		{
-			f++;
-			if (*f == '%')
-				ft_putchr('%', &count);
-			else if (*f)
-				matchf(args, *f, &count);
-		}
-		else
-			ft_putchr(*f, &count);
-		if (*f)
-			f++;
-	}
-	return (count);
-}
-
 #include <stdio.h>
+#include "ft_printf.h"
 
-int main(void)
+int	main(void)
 {
-	// int	c;
-	// int c2;
+	int		a;
+	char	*str;
+	void	*null_ptr;
+	int		res1;
+	int		res2;
 
-	// c = ft_printf("%c\n", 'h');
-	// c2 = printf("%c\n", 'h');
-	// printf("%d and %d", c, c2);
-	char	*c = "hrllo";
-	int i;
-	i = printf("%s%\n", c);
-	printf("%d", i);
+	a = 42;
+	str = "Hello 42";
+	null_ptr = NULL;
+
+	printf("[ Test 1: Stack Memory Address ]\n");
+	res1 = printf("   printf: [%p]\n", (void *)&a);
+	res2 = ft_printf("ft_printf: [%p]\n", (void *)&a);
+	printf("Count -> printf: %d | ft_printf: %d\n\n", res1, res2);
+
+	printf("[ Test 2: String Literal Address ]\n");
+	res1 = printf("   printf: [%p]\n", (void *)str);
+	res2 = ft_printf("ft_printf: [%p]\n", (void *)str);
+	printf("Count -> printf: %d | ft_printf: %d\n\n", res1, res2);
+
+	printf("[ Test 3: NULL Pointer ]\n");
+	res1 = printf("   printf: [%p]\n", null_ptr);
+	res2 = ft_printf("ft_printf: [%p]\n", null_ptr);
+	printf("Count -> printf: %d | ft_printf: %d\n\n", res1, res2);
+
+	printf("[ Test 4: Multiple Pointers ]\n");
+	res1 = printf("   printf: [%p] | [%p]\n", (void *)&a, null_ptr);
+	res2 = ft_printf("ft_printf: [%p] | [%p]\n", (void *)&a, null_ptr);
+	printf("Count -> printf: %d | ft_printf: %d\n\n", res1, res2);
+
 	return (0);
 }
