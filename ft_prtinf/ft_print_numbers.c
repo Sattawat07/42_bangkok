@@ -14,38 +14,50 @@
 void	ft_putnbr(int n, int *count)
 {
 	long	number;
-	long	divisor;
+	char	buffer[10];
+	int		i;
 
 	number = n;
+	if (number == 0)
+	{
+		ft_putchr('0', count);
+		return ;
+	}
 	if (number < 0)
 	{
 		ft_putchr('-', count);
 		number = -number;
 	}
-	divisor = 1;
-	while (number / divisor >= 10)
-		divisor *= 10;
-	while (divisor > 0)
+	i = 0;
+	while (number > 0)
 	{
-		ft_putchr((number / divisor) + '0', count);
-		number %= divisor;
-		divisor /= 10;
+		buffer[i++] = (number % 10) + '0';
+		number /= 10;
 	}
+	while (i > 0)
+		ft_putchr(buffer[--i], count);
 }
 
 void	ft_putnbr_unsigned(unsigned int n, int *count)
 {
-	unsigned long	number;
-	unsigned long	divisor;
+	char	buffer[10];
+	int		i;
 
-	number = n;
-	divisor = 1;
-	while (number / divisor >= 10)
-		divisor *= 10;
-	while (divisor > 0)
+	i = 0;
+	if (n == 0)
 	{
-		ft_putchr((number / divisor) + '0', count);
-		number %= divisor;
-		divisor /= 10;
+		ft_putchr('0', count);
+		return ;
+	}
+	while (n > 0)
+	{
+		buffer[i] = (n % 10) + '0';
+		n /= 10;
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		ft_putchr(buffer[i], count);
 	}
 }

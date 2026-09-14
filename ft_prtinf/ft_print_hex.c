@@ -14,31 +14,39 @@
 
 void	ft_puthex(unsigned int num, char specifier, int *count)
 {
-	char			*base;
-	unsigned long	number;
-	unsigned long	divisor;
+	char	*base;
+	char	buffer[10];
+	int		i;
 
+	i = 0;
+	if (num == 0)
+	{
+		ft_putchr('0', count);
+		return ;
+	}
 	if (specifier == 'x')
 		base = "0123456789abcdef";
 	else if (specifier == 'X')
 		base = "0123456789ABCDEF";
-	number = num;
-	divisor = 1;
-	while (number / divisor >= 16)
-		divisor *= 16;
-	while (divisor > 0)
+	while (num > 0)
 	{
-		ft_putchr(base[number / divisor], count);
-		number %= divisor;
-		divisor /= 16;
+		buffer[i] = base[num % 16];
+		num /= 16;
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		ft_putchr(buffer[i], count);
 	}
 }
 
 void	ft_putptr(void *ptr, int *count)
 {
 	char			*base;
+	char			buffer[16];
+	int				i;
 	unsigned long	address;
-	unsigned long	divisor;
 
 	if (!ptr)
 	{
@@ -46,15 +54,18 @@ void	ft_putptr(void *ptr, int *count)
 		return ;
 	}
 	ft_putstr("0x", count);
-	base = "0123456789abcdf";
+	base = "0123456789abcdef";
 	address = (unsigned long)ptr;
-	divisor = 1;
-	while (address / divisor >= 16)
-		divisor *= 16;
-	while (divisor > 0)
+	i = 0;
+	while (address > 0)
 	{
-		ft_putchr(base[address / divisor], count);
-		address %= divisor;
-		divisor /= 16;
+		buffer[i] = base[address % 16];
+		address /= 16;
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		ft_putchr(buffer[i], count);
 	}
 }
