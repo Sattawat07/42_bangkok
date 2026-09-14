@@ -67,6 +67,7 @@ int	ft_printf(const char *f, ...)
 
 // void	test_check(char *test_name, int r1, int r2)
 // {
+// https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
 // 	printf("   --> Result (%s) : printf = %-3d | ft_printf = %-3d ",
 // 				test_name, r1, r2);
 // 	if (r1 == r2)
