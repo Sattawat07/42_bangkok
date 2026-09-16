@@ -49,6 +49,7 @@ int	ft_printf(const char *f, ...)
 		if (*f)
 			f++;
 	}
+	va_end(args);
 	return (count);
 }
 
