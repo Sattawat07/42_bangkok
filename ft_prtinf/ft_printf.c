@@ -55,7 +55,7 @@ int	ft_printf(const char *f, ...)
 
 // // command
 // // 1. make && make clean
-// // 2. cc ft_printf.c libftprintf.a -I. && ./a.out
+// // 2. cc ft_printf.c libftprintf.a -I. -o printf_demo && ./printf_demo
 // #include <stdio.h>
 // #include <limits.h>
 

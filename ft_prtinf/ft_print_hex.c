@@ -30,15 +30,11 @@ void	ft_puthex(unsigned int num, char specifier, int *count)
 		base = "0123456789ABCDEF";
 	while (num > 0)
 	{
-		buffer[i] = base[num % 16];
+		buffer[i++] = base[num % 16];
 		num /= 16;
-		i++;
 	}
 	while (i > 0)
-	{
-		i--;
-		ft_putchr(buffer[i], count);
-	}
+		ft_putchr(buffer[--i], count);
 }
 
 void	ft_putptr(void *ptr, int *count)
@@ -59,13 +55,9 @@ void	ft_putptr(void *ptr, int *count)
 	i = 0;
 	while (address > 0)
 	{
-		buffer[i] = base[address % 16];
+		buffer[i++] = base[address % 16];
 		address /= 16;
-		i++;
 	}
 	while (i > 0)
-	{
-		i--;
-		ft_putchr(buffer[i], count);
-	}
+		ft_putchr(buffer[--i], count);
 }

@@ -51,13 +51,9 @@ void	ft_putnbr_unsigned(unsigned int n, int *count)
 	}
 	while (n > 0)
 	{
-		buffer[i] = (n % 10) + '0';
+		buffer[i++] = (n % 10) + '0';
 		n /= 10;
-		i++;
 	}
 	while (i > 0)
-	{
-		i--;
-		ft_putchr(buffer[i], count);
-	}
+		ft_putchr(buffer[--i], count);
 }

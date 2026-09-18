@@ -26,8 +26,7 @@ Compile and run:
 
 ```sh
 make && make clean
-cc ft_printf.c libftprintf.a -I. -o printf_demo
-./printf_demo
+cc ft_printf.c libftprintf.a -I. -o printf_demo && ./printf_demo
 ```
 
 ## Algorithm and Technical Choices
