@@ -61,21 +61,47 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static char	*ft_grow(char *line, size_t len, size_t *capacity, size_t needed)
 {
-	size_t	lens1;
-	size_t	lens2;
-	char	*str;
+	size_t	new_capacity;
+	char	*new_line;
 
-	lens1 = ft_strlen(s1);
-	lens2 = ft_strlen(s2);
-	str = malloc(sizeof(char) * (lens1 + lens2 + 1));
-	if (!str)
+	new_capacity = *capacity;
+	while (new_capacity < needed)
+	{
+		if (new_capacity > (size_t)-1 / 2)
+			new_capacity = needed;
+		else
+			new_capacity *= 2;
+	}
+	new_line = malloc(new_capacity);
+	if (!new_line)
 		return (NULL);
-	if (s1)
-		ft_memcpy(str, s1, lens1);
-	if (s2)
-		ft_memcpy(str + lens1, s2, lens2);
-	str[lens1 + lens2] = '\0';
-	return (str);
+	if (line)
+		ft_memcpy(new_line, line, len);
+	free(line);
+	*capacity = new_capacity;
+	return (new_line);
+}
+
+char	*ft_strjoin(char *line, const char *buffer, size_t *len,
+		size_t *capacity)
+{
+	size_t	add;
+	char	*new_line;
+
+	add = ft_strlen(buffer);
+	if (add > (size_t)-1 - *len - 1)
+		return (free(line), NULL);
+	if (*capacity < *len + add + 1)
+	{
+		new_line = ft_grow(line, *len, capacity, *len + add + 1);
+		if (!new_line)
+			return (free(line), NULL);
+		line = new_line;
+	}
+	ft_memcpy(line + *len, buffer, add);
+	*len += add;
+	line[*len] = '\0';
+	return (line);
 }

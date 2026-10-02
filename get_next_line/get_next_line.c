@@ -12,28 +12,40 @@
 
 #include "get_next_line.h"
 
-char	*ft_get_line(int fd, char *line)
+static char	*ft_read_line(int fd, char *line, char *buffer)
 {
 	int		rsize;
-	char	*buffer;
-	char	*tmp;
+	size_t	len;
+	size_t	capacity;
 
-	buffer = malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
+	len = ft_strlen(line);
+	capacity = len + 1;
 	rsize = 1;
 	while (rsize > 0)
 	{
 		rsize = read(fd, buffer, BUFFER_SIZE);
 		if (rsize == -1)
-			return (free(buffer), free(line),NULL);
+			return (free(line), NULL);
+		if (rsize == 0)
+			break ;
 		buffer[rsize] = '\0';
-		tmp = ft_strjoin(line, buffer);
-		free(line);
-		line = tmp;
+		line = ft_strjoin(line, buffer, &len, &capacity);
+		if (!line)
+			return (NULL);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
+	return (line);
+}
+
+char	*ft_get_line(int fd, char *line)
+{
+	char	*buffer;
+
+	buffer = malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	line = ft_read_line(fd, line, buffer);
 	free(buffer);
 	return (line);
 }
