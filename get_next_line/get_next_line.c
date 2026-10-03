@@ -21,7 +21,7 @@ static char	*ft_read_line(int fd, char *line, char *buffer)
 	len = ft_strlen(line);
 	capacity = len + 1;
 	rsize = 1;
-	while (rsize > 0 && !ft_strchr(line, '\n'))
+	while (rsize > 0)
 	{
 		rsize = read(fd, buffer, BUFFER_SIZE);
 		if (rsize == -1)
