@@ -18,7 +18,7 @@
 
 char	*ft_get_line(int fd, char *line);
 char	*ft_extract_line(char *line);
-char	*ft_remain_buff(char *line);
+char	*ft_remain_buff(char *line, int *error);
 char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *s);

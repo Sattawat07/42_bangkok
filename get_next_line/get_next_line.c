@@ -14,14 +14,14 @@
 
 static char	*ft_read_line(int fd, char *line, char *buffer)
 {
-	int		rsize;
+	ssize_t	rsize;
 	size_t	len;
 	size_t	capacity;
 
 	len = ft_strlen(line);
 	capacity = len + 1;
 	rsize = 1;
-	while (rsize > 0)
+	while (rsize > 0 && !ft_strchr(line, '\n'))
 	{
 		rsize = read(fd, buffer, BUFFER_SIZE);
 		if (rsize == -1)
@@ -42,9 +42,11 @@ char	*ft_get_line(int fd, char *line)
 {
 	char	*buffer;
 
+	if (ft_strchr(line, '\n'))
+		return (line);
 	buffer = malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
 	if (!buffer)
-		return (NULL);
+		return (free(line), NULL);
 	line = ft_read_line(fd, line, buffer);
 	free(buffer);
 	return (line);
@@ -52,8 +54,8 @@ char	*ft_get_line(int fd, char *line)
 
 char	*ft_extract_line(char *line)
 {
-	int		len;
-	int		i;
+	size_t	len;
+	size_t	i;
 	char	*buffer;
 
 	if (!line || !line[0])
@@ -76,10 +78,9 @@ char	*ft_extract_line(char *line)
 	return (buffer);
 }
 
-char	*ft_remain_buff(char *line)
+char	*ft_remain_buff(char *line, int *error)
 {
-	int		len;
-	int		i;
+	size_t	len;
 	char	*buffer;
 
 	len = 0;
@@ -89,14 +90,11 @@ char	*ft_remain_buff(char *line)
 		return (free(line), NULL);
 	buffer = malloc(sizeof(char) * (ft_strlen(line) - len + 1));
 	if (!buffer)
-		return (free(line), NULL);
-	i = 0;
-	while (line[len + i])
 	{
-		buffer[i] = line[len + i];
-		i++;
+		*error = 1;
+		return (free(line), NULL);
 	}
-	buffer[i] = '\0';
+	ft_memcpy(buffer, line + len, ft_strlen(line + len) + 1);
 	free(line);
 	return (buffer);
 }
@@ -105,13 +103,21 @@ char	*get_next_line(int fd)
 {
 	static char	*r_buffer;
 	char		*next_line;
+	int			error;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (read(fd, NULL, 0) < 0)
+		return (free(r_buffer), r_buffer = NULL, NULL);
 	r_buffer = ft_get_line(fd, r_buffer);
 	if (!r_buffer)
 		return (NULL);
 	next_line = ft_extract_line(r_buffer);
-	r_buffer = ft_remain_buff(r_buffer);
+	if (!next_line)
+		return (free(r_buffer), r_buffer = NULL, NULL);
+	error = 0;
+	r_buffer = ft_remain_buff(r_buffer, &error);
+	if (error)
+		return (free(next_line), NULL);
 	return (next_line);
 }
