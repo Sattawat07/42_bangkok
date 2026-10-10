@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: sattawat <sboontem@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/24 21:55:53 by sboontem          #+#    #+#             */
-/*   Updated: 2026/09/24 21:55:53 by sboontem         ###   ########.fr       */
+/*   Created: 2026/10/10 07:37:31 by sattawat          #+#    #+#             */
+/*   Updated: 2026/10/10 07:39:21 by sattawat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
