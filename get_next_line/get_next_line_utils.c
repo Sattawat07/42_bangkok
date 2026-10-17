@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sattawat <sboontem@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 07:06:50 by sattawat          #+#    #+#             */
-/*   Updated: 2026/10/10 07:10:01 by sattawat         ###   ########.fr       */
+/*   Updated: 2026/10/17 23:44:43 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*ft_grow(char *line, size_t len, size_t *capacity, size_t needed)
 	new_capacity = *capacity;
 	while (new_capacity < needed)
 	{
-		if (new_capacity > (size_t)-1 / 2)
+		if (new_capacity > (size_t) - 1 / 2)
 			new_capacity = needed;
 		else
 			new_capacity *= 2;
@@ -91,7 +91,7 @@ char	*ft_strjoin(char *line, const char *buffer, size_t *len,
 	char	*new_line;
 
 	add = ft_strlen(buffer);
-	if (add > (size_t)-1 - *len - 1)
+	if (add > (size_t) - 1 - *len - 1)
 		return (free(line), NULL);
 	if (*capacity < *len + add + 1)
 	{

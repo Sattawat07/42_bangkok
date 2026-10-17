@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sattawat <sboontem@student.42bangkok.com>  +#+  +:+       +#+        */
+/*   By: sboontem <sboontem@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 07:37:31 by sattawat          #+#    #+#             */
-/*   Updated: 2026/10/10 07:39:21 by sattawat         ###   ########.fr       */
+/*   Updated: 2026/10/17 23:03:54 by sboontem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_get_line(int fd, char *line);
-char	*ft_extract_line(char *line);
-char	*ft_remain_buff(char *line, int *error);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *s);
@@ -26,9 +27,5 @@ char	*ft_strchr(const char *s, int c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char *line, const char *buffer, size_t *len,
 			size_t *capacity);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 
 #endif

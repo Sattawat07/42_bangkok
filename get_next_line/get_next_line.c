@@ -38,7 +38,7 @@ static char	*ft_read_line(int fd, char *line, char *buffer)
 	return (line);
 }
 
-char	*ft_get_line(int fd, char *line)
+static char	*ft_get_line(int fd, char *line)
 {
 	char	*buffer;
 
@@ -52,7 +52,7 @@ char	*ft_get_line(int fd, char *line)
 	return (line);
 }
 
-char	*ft_extract_line(char *line)
+static char	*ft_extract_line(char *line)
 {
 	size_t	len;
 	size_t	i;
@@ -78,7 +78,7 @@ char	*ft_extract_line(char *line)
 	return (buffer);
 }
 
-char	*ft_remain_buff(char *line, int *error)
+static char	*ft_remain_buff(char *line, int *error)
 {
 	size_t	len;
 	char	*buffer;
